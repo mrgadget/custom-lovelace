@@ -42,8 +42,9 @@ class AlarmControlPanelCard extends HTMLElement {
     content.innerHTML = `
       ${this._actionButtons()}
       ${entity.attributes.code_format ?
-          `<paper-input label='${this._label("ui.card.alarm_control_panel.code")}'
-          type="password"></paper-input>` : ''}
+        //`<paper-input label='${this._label("ui.card.alarm_control_panel.code")}'
+        `<paper-input label='Alarm Code' style='text-align: center;'
+        type="password"></paper-input>` : ''}
       ${this._keypad(entity)}
     `;
     card.appendChild(this._style(config.style, entity));
@@ -273,8 +274,8 @@ class AlarmControlPanelCard extends HTMLElement {
     if (this._config.display_letters) {
       letterHTML = `<div class='alpha'>${alpha}</div>`
     }
-    return `<mwc-button dense value="${button}">${button}${letterHTML}
-      </mwc-button>`;
+    return `<mwc-button outlined value="${button}">${button}${letterHTML}
+    </mwc-button>`;
   }
 
   _style(icon_style, entity) {
@@ -296,8 +297,8 @@ class AlarmControlPanelCard extends HTMLElement {
       }
       ha-icon {
         color: var(--alarm-state-color);
-	width: 24px;
-	height: 24px;
+	    width: 24px;
+	    height: 24px;
       }
       ha-label-badge-icon {
         --ha-label-badge-color: var(--alarm-state-color);
@@ -418,12 +419,13 @@ class AlarmControlPanelCard extends HTMLElement {
       .pad div {
         display: flex;
         flex-direction: column;
+        margin: 10px 0px 15px 0px;
       }
       .pad mwc-button {
-        margin-bottom: 10%;
         position: relative;
-        padding: calc(var(--base-unit));
-        font-size: calc(var(--base-unit) * 1.1);
+        padding: calc(var(--base-unit) * 0.5);
+        font-size: calc(var(--base-unit) * 1.6);
+        width: calc(var(--base-unit) * 5);
       }
       .actions {
         margin: 0 8px;
