@@ -71,7 +71,7 @@ class AlarmControlPanelCard extends HTMLElement {
       this._arm_action = config.auto_enter.arm_action;
     }
     if (!config.states) config.states = ['arm_away', 'arm_home'];
-    if (!config.scale) config.scale = '15px';
+    //if (!config.scale) config.scale = '15px';
     this._config = Object.assign({}, config);
 
     const root = this.shadowRoot;
@@ -278,6 +278,8 @@ class AlarmControlPanelCard extends HTMLElement {
     </mwc-button>`;
   }
 
+  //Removed 'scale' feature as 0.106 of HA broke it (scale became non-extensible).
+  // --base-unit: ${this._config.scale};
   _style(icon_style, entity) {
     const style = document.createElement('style');
     style.textContent = `
@@ -291,7 +293,7 @@ class AlarmControlPanelCard extends HTMLElement {
         --alarm-color-armed: var(--label-badge-red);
         --alarm-color-autoarm: rgba(0, 153, 255, .1);
         --alarm-state-color: var(--alarm-color-armed);
-        --base-unit: ${this._config.scale};
+        --base-unit: 15px;
         font-size: calc(var(--base-unit));
         ${icon_style}
       }
